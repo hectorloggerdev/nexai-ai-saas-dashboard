@@ -1,0 +1,3 @@
+import { Link } from 'react-router-dom'
+import { AlertTriangle } from 'lucide-react'
+export function NotFound(){return <main className="grid min-h-screen place-items-center p-4"><section className="card max-w-xl text-center"><div className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-white/10"><AlertTriangle className="text-cyanx" size={32}/></div><h1 className="mt-6 text-5xl font-black">404</h1><p className="mt-3 text-white/55">The page you are looking for does not exist or has been moved.</p><Link to="/dashboard" className="btn-primary mt-8 inline-block">Back to Dashboard</Link></section></main>}

@@ -1,0 +1,4 @@
+import { DataTable } from '../components/ui/DataTable'
+import { StatusBadge } from '../components/ui/StatusBadge'
+import { users } from '../data/mockData'
+export function Users(){return <div className="space-y-6"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold text-cyanx">Customers</p><h1 className="text-3xl font-bold">Users</h1><p className="mt-2 text-sm text-white/45">Manage workspace users, subscriptions, and request volume.</p></div><button className="btn-primary">Add User</button></div><DataTable title="User Directory" description="Frontend-only data table with mock SaaS user records." data={users} columns={[{header:'Name',accessor:'name'},{header:'Email',accessor:'email'},{header:'Plan',accessor:'plan'},{header:'Status',accessor:'status',render:v=><StatusBadge status={v}/>},{header:'Requests',accessor:'requests'},{header:'Joined',accessor:'joined'}]}/></div>}

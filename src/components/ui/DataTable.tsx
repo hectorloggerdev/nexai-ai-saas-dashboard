@@ -1,0 +1,5 @@
+import type { ReactNode } from 'react'
+
+type Column<T>={header:string;accessor:keyof T;render?:(value:any,row:T)=>ReactNode}
+type Props<T>={title?:string;description?:string;columns:Column<T>[];data:T[]}
+export function DataTable<T extends Record<string,any>>({title,description,columns,data}:Props<T>){return <div className="card overflow-hidden">{(title||description)&&<div className="mb-5">{title&&<h2 className="text-xl font-bold">{title}</h2>}{description&&<p className="mt-1 text-sm text-white/45">{description}</p>}</div>}<div className="overflow-x-auto"><table className="w-full min-w-[720px] border-collapse text-left text-sm"><thead><tr className="border-b border-white/10">{columns.map(c=><th key={String(c.accessor)} className="px-4 py-3 font-semibold text-white/55">{c.header}</th>)}</tr></thead><tbody>{data.map((row,i)=><tr key={i} className="border-b border-white/10 last:border-0 hover:bg-white/5">{columns.map(c=><td key={String(c.accessor)} className="px-4 py-4">{c.render?c.render(row[c.accessor],row):row[c.accessor]}</td>)}</tr>)}</tbody></table></div></div>}
